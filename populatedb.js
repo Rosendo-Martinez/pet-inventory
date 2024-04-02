@@ -7,7 +7,7 @@ console.log(
   // Get arguments passed on command line
   const userArgs = process.argv.slice(2);
 
-  const Pet = require("./model/Pets");
+  const Pet = require("./model/Pet");
   
   const mongoose = require("mongoose");
   mongoose.set("strictQuery", false);
