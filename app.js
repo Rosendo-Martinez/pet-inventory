@@ -9,13 +9,12 @@ const inventoryRouter = require('./routes/inventory');
 
 var app = express();
 
+// Connect to database
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = process.env.DATABASE;
-
 main().catch((err) => console.log(err));
 async function main() {
-  await mongoose.connect(mongoDB);
+  await mongoose.connect(process.env.DATABASE);
 }
 
 // view engine setup
