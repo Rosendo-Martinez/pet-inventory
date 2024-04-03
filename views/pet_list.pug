@@ -1,0 +1,20 @@
+extends layout 
+
+block content 
+    h1=title 
+    
+    table(class="table table-striped")
+        thead
+            th(scope="col") #
+            th(scope="col") Name 
+            th(scope="col") Admittance 
+            th(scope="col") Type 
+        tbody 
+            each pet, index in pet_list 
+                tr 
+                    th(scope="row")= index + 1
+                    td 
+                        a(href=pet.url) #{pet.name}
+                    td #{pet.date_of_admittance_formatted}
+                    td #{pet.type}
+    

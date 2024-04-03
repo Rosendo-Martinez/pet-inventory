@@ -3,7 +3,12 @@ const Pet = require("../model/Pet");
 const asyncHandler = require("express-async-handler");
 
 exports.index = asyncHandler(async (req, res, next) => {
-    res.send(`Index not implemented (list of cats and dogs).`);
+    const allPets = await Pet.find().sort({ date_of_admittance: -1 }).exec();
+
+    res.render("pet_list", {
+        title: "All Pets",
+        pet_list: allPets
+    });
 });
 
 exports.cat_list = asyncHandler(async (req, res, next) => {
