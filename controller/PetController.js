@@ -192,5 +192,6 @@ exports.pet_delete_get = asyncHandler(async (req, res, next) => {
 });
 
 exports.pet_delete_post = asyncHandler(async (req, res, next) => {
-    res.send(`Cat delete post not implemented. id: ${req.params.id}`);
+    await Pet.findByIdAndDelete(req.body.petId);
+    res.redirect('/inventory');
 });
