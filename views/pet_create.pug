@@ -20,7 +20,7 @@ block content
         div(class="row my-3")
             div(class="col-md-4")
                 label(for="date_of_admittance") Admittance Date
-                input(type="date" class="form-control" id="date_of_admittance" name="date_of_admittance" placeholder="YYYY/MM/DD" required value=(undefined===pet ? '' : pet.date_of_admittance))
+                input(type="date" class="form-control" id="date_of_admittance" name="date_of_admittance" placeholder="YYYY/MM/DD" required value=(undefined===pet ? '' : pet.date_of_admittance_YYYY_MM_DD))
             div(class="col-md-4")
                 label(for="age") Age
                 select(id="age" class="form-control" name="age" required)
@@ -45,7 +45,7 @@ block content
     if error_list
         ul(class="list-group")
             each error in error_list
-                li(class="list-group-item list-group-item-warning") #{error}
+                li(class="list-group-item list-group-item-warning") #{error.msg}
 
         
 

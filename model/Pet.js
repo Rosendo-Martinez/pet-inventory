@@ -20,4 +20,8 @@ PetSchema.virtual("date_of_admittance_formatted").get(function () {
     return this.date_of_admittance ? DateTime.fromJSDate(this.date_of_admittance).toLocaleString(DateTime.DATE_MED) : "";
 });
 
+PetSchema.virtual("date_of_admittance_YYYY_MM_DD").get(function () {
+    return this.date_of_admittance ? this.date_of_admittance.toISOString().slice(0, 10) : ''
+})
+
 module.exports = mongoose.model("Pet", PetSchema);
