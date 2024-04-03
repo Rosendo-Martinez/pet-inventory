@@ -9,39 +9,46 @@ block content
         div(class="row my-3")
             div(class="col-md-6")
                 label(for="name") Name 
-                input(type="text" class="form-control" id="name" name="name" placeholder="Pet's name" required)
+                input(type="text" class="form-control" id="name" name="name" placeholder="Pet's name" required value=(undefined===pet ? '' : pet.name))
             div(class="col-md-6")
                 label(for="type") Pet Type
                 select(id="type" class="form-control" name="type" required)
-                    option(value="" selected disabled hidden) -- type --
-                    option(value="dog") dog 
-                    option(value="cat") cat 
+                    option(value="" disabled hidden selected=(undefined===pet ? true : false)) -- type --
+                    option(value="dog" selected=(undefined!==pet && pet.type=="dog" ? true : false)) dog 
+                    option(value="cat" selected=(undefined!==pet && pet.type=="cat" ? true : false)) cat 
         
         div(class="row my-3")
             div(class="col-md-4")
                 label(for="date_of_admittance") Admittance Date
-                input(type="date" class="form-control" id="date_of_admittance" name="date_of_admittance" placeholder="YYYY/MM/DD" required)
+                input(type="date" class="form-control" id="date_of_admittance" name="date_of_admittance" placeholder="YYYY/MM/DD" required value=(undefined===pet ? '' : pet.date_of_admittance))
             div(class="col-md-4")
                 label(for="age") Age
                 select(id="age" class="form-control" name="age" required)
-                    option(value="" selected disabled hidden) -- age --
-                    option(value="young") young
-                    option(value="mature") mature
-                    option(value="old") old
+                    option(value="" disabled hidden selected=(undefined===pet ? true : false)) -- age --
+                    option(value="young" selected=(undefined!==pet && pet.age=="young" ? true : false)) young
+                    option(value="mature" selected=(undefined!==pet && pet.age=="mature" ? true : false)) mature
+                    option(value="old" selected=(undefined!==pet && pet.age=="old" ? true : false)) old
             div(class="col-md-4")
                 label(for="domesticated") Domesticated
                 select(id="domesticated" class="form-control" name="domesticated" required)
-                    option(value="" selected disabled hidden) -- choose here --
-                    option(value="true") yes
-                    option(value="false") no
+                    option(value="" disabled hidden selected=(undefined===pet ? true : false)) -- choose here --
+                    option(value="true" selected=(undefined!==pet && pet.domesticated==true ? true : false)) yes
+                    option(value="false" selected=(undefined!==pet && pet.domesticated==false ? true : false)) no
 
         div(class="row my-3")
             div
                 label(for="summary") Summary 
-                textarea(class="form-control" rows="4" name="summary" placeholder="Description of pet..." required)
+                textarea(class="form-control" rows="4" name="summary" placeholder="Description of pet..." required) #{undefined===pet ? '' : pet.summary}
         
         button(class="btn btn-primary my-3" type="submit") Submit
+
+    if error_list
+        ul(class="list-group")
+            each error in error_list
+                li(class="list-group-item list-group-item-warning") #{error}
+
         
+
 
 
 
