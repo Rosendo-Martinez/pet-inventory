@@ -7,8 +7,8 @@ const PetSchema = new Schema({
     type: { "type": String, "enum": ["cat", "dog"], required: true },
     name: { "type": String, minLength: 1, required: true },
     date_of_admittance: { "type": Date, required: true },
-    summary: { "type": String },
-    age: { "type": String, "enum": ["young", "mature", "old"] },
+    summary: { "type": String, required: true },
+    age: { "type": String, "enum": ["young", "mature", "old"], required: true },
     domesticated: { "type": Boolean, required: true },
 });
 
@@ -21,7 +21,7 @@ PetSchema.virtual("date_of_admittance_formatted").get(function () {
 });
 
 PetSchema.virtual("date_of_admittance_YYYY_MM_DD").get(function () {
-    return this.date_of_admittance ? this.date_of_admittance.toISOString().slice(0, 10) : ''
+    return this.date_of_admittance ? this.date_of_admittance.toISOString().slice(0, 10) : '';
 })
 
 module.exports = mongoose.model("Pet", PetSchema);
