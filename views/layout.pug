@@ -14,16 +14,18 @@ html
     div(class="container-fluid")
       div(class="row")
         div(class="col-3 pt-3")
-          div(class="border-bottom")
-            p 
-              a(href="/inventory/cats") Cat List 
-            p 
-              a(href="/inventory/dogs") Dog List 
-            p 
-              a(href="/inventory") All Pets List
           div
-            p 
-              a(href="/inventory/create") Add Pet
+            ul(class="list-group")
+              li(class="list-group-item") 
+                a(href="/inventory/cats") Cat List 
+              li(class="list-group-item") 
+                a(href="/inventory/dogs") Dog List 
+              li(class="list-group-item") 
+                a(href="/inventory") All Pets List
+          div
+            ul(class="list-group mt-5")
+              li(class="list-group-item") 
+                a(href="/inventory/create") Add Pet
         div(class="col")
           block content
     
