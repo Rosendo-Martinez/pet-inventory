@@ -30,7 +30,10 @@ exports.dog_list = asyncHandler(async (req, res, next) => {
 });
 
 exports.pet_create_get = asyncHandler(async (req, res, next) => {
-    res.send(`Pet create get not implemented.`);
+    // res.send(`Pet create get not implemented.`);
+    res.render("pet_create", {
+        title: "Create Pet"
+    })
 });
 
 exports.pet_create_post = asyncHandler(async (req, res, next) => {
