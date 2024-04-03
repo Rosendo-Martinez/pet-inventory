@@ -176,7 +176,19 @@ exports.pet_update_post = [
 )];
 
 exports.pet_delete_get = asyncHandler(async (req, res, next) => {
-    res.send(`Cat delete get not implemented. id: ${req.params.id}`);
+    const pet = await Pet.findById(req.params.id).exec();
+
+    if (pet === null) {
+        // No results.
+        const err = new Error("Pet not found");
+        err.status = 404;
+        return next(err);
+    };
+
+    res.render('pet_delete.pug', {
+        title: 'Delete Pet',
+        pet: pet,
+    })
 });
 
 exports.pet_delete_post = asyncHandler(async (req, res, next) => {
