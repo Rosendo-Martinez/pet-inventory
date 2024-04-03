@@ -12,7 +12,12 @@ exports.index = asyncHandler(async (req, res, next) => {
 });
 
 exports.cat_list = asyncHandler(async (req, res, next) => {
-    res.send(`Cat list not implemented.`);
+    const allCats = await Pet.find({ type: "cat"}).sort({ date_of_admittance: -1 }).exec();
+
+    res.render("pet_list", {
+        title: "All Cats",
+        pet_list: allCats
+    })
 });
 
 exports.dog_list = asyncHandler(async (req, res, next) => {
