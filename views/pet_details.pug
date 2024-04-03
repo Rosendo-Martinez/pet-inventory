@@ -1,0 +1,24 @@
+extends layout 
+
+block content 
+
+    h1= pet.name 
+    
+    p #[strong Type:] #{pet.type}
+    p #[strong Age:] #{pet.age}
+    p #[strong Admittance:] #{pet.date_of_admittance_formatted}
+    p #[strong Domesticated:] #{pet.domesticated}
+    
+    div(class="card")
+        div(class="card-header")
+            | Summary
+        div(class="card-body")
+            p #{pet.summary}
+
+    hr
+    div
+        a(href=pet.url + '/update', class="btn btn-primary my-2") Update Pet 
+    div
+        a(href=pet.url + '/delete', class="btn btn-primary my-2") Delete Pet
+
+
