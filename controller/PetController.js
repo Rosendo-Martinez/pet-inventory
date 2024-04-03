@@ -21,7 +21,12 @@ exports.cat_list = asyncHandler(async (req, res, next) => {
 });
 
 exports.dog_list = asyncHandler(async (req, res, next) => {
-    res.send(`Dog list not implemented.`);
+    const allDogs = await Pet.find({ type: "dog"}).sort({ date_of_admittance: -1 }).exec();
+
+    res.render("pet_list", {
+        title: "All Dogs",
+        pet_list: allDogs
+    })
 });
 
 exports.pet_create_get = asyncHandler(async (req, res, next) => {
