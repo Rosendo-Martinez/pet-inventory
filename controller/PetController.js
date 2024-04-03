@@ -30,7 +30,7 @@ exports.dog_list = asyncHandler(async (req, res, next) => {
 });
 
 exports.pet_create_get = asyncHandler(async (req, res, next) => {
-    res.render("pet_create", {
+    res.render("pet_form", {
         title: "Create Pet"
     })
 });
@@ -74,7 +74,7 @@ exports.pet_create_post = [
         });
 
         if (!errors.isEmpty()) {
-            res.render("pet_create", {
+            res.render("pet_form", {
                 title: "Create Pet",
                 pet: pet,
                 error_list: errors.array(),
@@ -114,7 +114,7 @@ exports.pet_update_get = asyncHandler(async (req, res, next) => {
         return next(err);
     };
 
-    res.render('pet_create', {
+    res.render('pet_form', {
         title: "Update Pet",
         pet: pet
     });
@@ -160,7 +160,7 @@ exports.pet_update_post = [
         });
 
         if (!errors.isEmpty()) {
-            res.render("pet_create", {
+            res.render("pet_form", {
                 title: "Update Pet",
                 pet: pet,
                 error_list: errors.array(),
